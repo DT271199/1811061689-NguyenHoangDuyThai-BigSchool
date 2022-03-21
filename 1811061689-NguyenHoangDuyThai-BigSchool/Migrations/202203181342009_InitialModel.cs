@@ -3,7 +3,7 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialModel : DbMigration
     {
         public override void Up()
         {

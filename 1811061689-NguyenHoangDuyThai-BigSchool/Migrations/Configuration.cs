@@ -10,7 +10,6 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "_1811061689_NguyenHoangDuyThai_BigSchool.Models.ApplicationDbContext";
         }
 
         protected override void Seed(_1811061689_NguyenHoangDuyThai_BigSchool.Models.ApplicationDbContext context)

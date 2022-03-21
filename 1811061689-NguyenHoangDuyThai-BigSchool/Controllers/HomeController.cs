@@ -26,5 +26,13 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
 
             return View();
         }
+
+        /////
+        public ActionResult ContactTTT()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

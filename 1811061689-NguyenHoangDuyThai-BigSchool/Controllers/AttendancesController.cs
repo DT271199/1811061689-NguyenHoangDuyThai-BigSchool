@@ -12,6 +12,7 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
     [Authorize]
     public class AttendancesController : ApiController
     {
+  
         private ApplicationDbContext _dbContext;
 
         public AttendancesController()
@@ -22,10 +23,13 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
         [HttpPost]
         public IHttpActionResult Attend([FromBody] int courseId)
         {
+            var userId = User.Identity.GetUserId();
+            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == courseId))
+                return BadRequest("The Attendance already exist!");
             var attendance = new Attendance
             {
                 CourseId = courseId,
-                AttendeeId = User.Identity.GetUserId()
+                AttendeeId = userId
             };
 
             _dbContext.Attendances.Add(attendance);

@@ -55,6 +55,8 @@
                 <div class="details">
                     <span class="lecturer">
                         @course.Lecturer.Name
+                        <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId" >Follow</button>
+                        </button>
                     </span>
                     <span class="Category">
                         @course.Category.Name

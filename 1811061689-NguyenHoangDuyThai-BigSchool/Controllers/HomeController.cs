@@ -1,4 +1,5 @@
 ﻿using _1811061689_NguyenHoangDuyThai_BigSchool.Models;
+using _1811061689_NguyenHoangDuyThai_BigSchool.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,12 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
                 .Include(c => c.Lecturee)
                 .Include(c => c.Category)
                 .Where(c => c.DateTime > DateTime.Now);
-            return View(upcommingCourses);
+            var viewModel = new CourseViewModel
+            {
+                UpcommingCourse = upcommingCourses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);     
         }
 
         public ActionResult About()

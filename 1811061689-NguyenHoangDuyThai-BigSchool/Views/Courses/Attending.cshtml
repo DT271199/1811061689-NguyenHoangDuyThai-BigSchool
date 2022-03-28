@@ -5,4 +5,16 @@
 }
 
 <h2>Attending</h2>
+<span class="lecturer">
+    @course.Lecturer.Name
+
+    @if (courses.IsCaneled)
+    {
+        <span class="label label-warning">Canceled</span>
+    }
+    @if (Model.ShowAction && !course.IsCaneled)
+    {
+        <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@"
+    }
+</span>
 

@@ -10,6 +10,7 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Models
     {
         public int id { get; set; }
 
+        public bool IsCanceLed { get; set; }
         public ApplicationUser Lecturer { get; set; }
         [Required]
         public string LecturerId { get; set; }

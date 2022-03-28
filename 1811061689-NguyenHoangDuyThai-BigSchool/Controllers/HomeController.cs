@@ -1,5 +1,5 @@
 ﻿using _1811061689_NguyenHoangDuyThai_BigSchool.Models;
-using _1811061689_NguyenHoangDuyThai_BigSchool.ViewModels;
+using _1811061689_NguyenHoangDuyThai_BigSchool.viewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

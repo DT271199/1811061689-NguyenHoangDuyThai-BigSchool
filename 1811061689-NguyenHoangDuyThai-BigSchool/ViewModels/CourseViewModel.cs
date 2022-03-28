@@ -6,10 +6,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace _1811061689_NguyenHoangDuyThai_BigSchool.ViewModels
+namespace _1811061689_NguyenHoangDuyThai_BigSchool.viewModel
 {
     public class CourseViewModel
     {
+        public int Id { get; set; }
+
         public IEnumerable<Course> UpcommingCourse { get; set; }
         public bool ShowAction { get; set; }
         [Required]
@@ -26,6 +28,11 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.ViewModels
         [Required]
         public byte Category { get; set; }
         public IEnumerable<Category> Categories { get; set; }
+        public string Heading { get; set; }
+        public string Action
+        {
+            get { return (Id != 0) ? "Update" : "Create"; }
+        }
 
         public DateTime GetDateTime()
         {

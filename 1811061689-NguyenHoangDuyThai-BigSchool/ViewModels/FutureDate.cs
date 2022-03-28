@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 
-namespace _1811061689_NguyenHoangDuyThai_BigSchool.ViewModels
+namespace _1811061689_NguyenHoangDuyThai_BigSchool.viewModel
 {
     public class FutureDate : ValidationAttribute
     {

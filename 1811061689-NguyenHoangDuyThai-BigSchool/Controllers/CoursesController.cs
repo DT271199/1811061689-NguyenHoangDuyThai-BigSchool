@@ -94,7 +94,7 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
                 Date = course.DateTime.ToString("dd/M/yyy"),
                 Time = course.DateTime.ToString("HH:mm"),
                 Category = course.CategoryId,
-                Place = course.Place
+                Place = course.Place,
                 Heading = "Edit Course",
                 Id = course.Id
             };

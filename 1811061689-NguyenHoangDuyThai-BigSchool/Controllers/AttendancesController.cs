@@ -38,4 +38,9 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
             return Ok();
         }
     }
+
+    public class AttendanceDto
+    {
+        public int CourseId { get; internal set; }
+    }
 }

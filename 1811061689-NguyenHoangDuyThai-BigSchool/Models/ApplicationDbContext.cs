@@ -9,10 +9,15 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Attendance> Attendances { get; set; }
-        public DbSet<Following> Followings { get; set; }
+        
+        
+            public DbSet<Course> Courses { get; set; }
+            public DbSet<Category> Categories { get; set; }
+            public DbSet<Attendance> Attendances { get; set; }
+            public DbSet<Following> Followings { get; set; }
+            public DbSet<Notification> Notifications { get; set; }
+            public DbSet<UserNotification> UserNotifications { get; set; }
+        
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -37,6 +42,10 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Models
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.Followees)
                 .WithRequired(f => f.Follower)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<UserNotification>()
+               .HasRequired(a => a.User)
+                .WithMany()
                 .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);

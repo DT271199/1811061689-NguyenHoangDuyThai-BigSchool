@@ -6,7 +6,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
+using AuthorizeAttribute = System.Web.Http.AuthorizeAttribute;
+using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 
 namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
 {
@@ -120,6 +123,51 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
 
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
+        }
+
+        [System.Web.Http.HttpDelete]
+        public IHttpActionResult Cancel(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var course = _dbContext.Courses.Single(c => c.id == id && c.LecturerId == userId);
+            if (course.IsCanceLed)
+                return NotFound();
+            course.IsCanceLed = true;
+
+            //Add notification
+            var notification = new Notification()
+            {
+                DateTime = DateTime.Now,
+                Course = course,
+                Type = NotificationType.CourseCanceled
+            };
+
+            var attendees = _dbContext.Attendances
+                .Where(a => a.CourseId == course.Id)
+                .Select(a => a.Attendee)
+                .ToList();
+
+            foreach (var attendee in attendees)
+            {
+                var userNotification = new UserNotification()
+                {
+                    User = attendee,
+                    Notification = notification
+                };
+                _dbContext.UserNotifications.Add(userNotification);
+            }
+            _dbContext.SaveChanges();
+            return Ok();
+        }
+
+        private IHttpActionResult Ok()
+        {
+            throw new NotImplementedException();
+        }
+
+        private IHttpActionResult NotFound()
+        {
+            throw new NotImplementedException();
         }
     }
 

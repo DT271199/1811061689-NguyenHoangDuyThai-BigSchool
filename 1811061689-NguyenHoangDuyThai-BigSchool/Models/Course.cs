@@ -9,7 +9,7 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Models
     public class Course
     {
         public int id { get; set; }
-
+        public int Id { get; internal set; }
         public bool IsCanceLed { get; set; }
         public ApplicationUser Lecturer { get; set; }
         [Required]

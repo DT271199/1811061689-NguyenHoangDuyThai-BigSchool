@@ -43,4 +43,23 @@ namespace _1811061689_NguyenHoangDuyThai_BigSchool.Controllers
     {
         public int CourseId { get; internal set; }
     }
+
+    [HttpDelete]
+    public IHttpActionResult DeleteAttendance(int id)
+    {
+        var userId = UserLoginInfo.Identity.GetUserId();
+
+        var attendance = _dbContext.Attendances
+            .SingleOrDefault(a => a.AttendeeId == userId && a.CourseId == id);
+
+        if(attendance == null)
+        {
+            return NotFound();
+        }
+
+        _dbContext.Attendances.Remove(attendance);
+        _dbContext.SaveChanges();
+
+        return Ok(id);
+    }
 }
